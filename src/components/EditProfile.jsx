@@ -52,7 +52,6 @@ const EditProfile = () => {
 
     const [firstName, setFirstName] = useState(fullName[0]);
     const [lastName, setLastName] = useState(fullName[1]);
-    const [phone, setPhone] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -135,7 +134,7 @@ const EditProfile = () => {
                                 value={lastName}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
                                 fullWidth
@@ -148,7 +147,7 @@ const EditProfile = () => {
                                 }
                                 // value={lastName}
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
 
                     <Link to="/">

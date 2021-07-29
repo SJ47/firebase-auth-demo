@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
 const SignIn = () => {
     const classes = useStyles();
 
-    const [emailValue, setEmailValue] = useState("test1@umachan.co.uk");
-    const [passwordValue, setPasswordValue] = useState("abc123");
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const history = useHistory();

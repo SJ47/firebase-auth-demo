@@ -1,5 +1,7 @@
 # Firebase Auth Demo
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06f3c606-c25a-4b5c-b8e8-3df71ab21526/deploy-status)](https://app.netlify.com/sites/peaceful-banach-7e9e03/deploys)
+
 This demo uses the firebase username and password authentication method.
 
 Authentication methods used include: Sign up, sign in, update profile, change email, change password, delete account, reset password and verification emails.

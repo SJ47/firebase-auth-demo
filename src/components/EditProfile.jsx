@@ -52,6 +52,9 @@ const EditProfile = () => {
 
     const [firstName, setFirstName] = useState(fullName[0]);
     const [lastName, setLastName] = useState(fullName[1]);
+    const [photoUrl, setPhotoUrl] = useState(
+        currentUser.photoURL ? currentUser.photoURL : ""
+    );
     const [errorMessage, setErrorMessage] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -65,11 +68,15 @@ const EditProfile = () => {
 
         try {
             // If first and/or last name has changed, update the display name of profile
-            if (firstName + " " + lastName === currentUser.displayName) {
+            if (
+                firstName + " " + lastName === currentUser.displayName &&
+                photoUrl === currentUser.photoURL
+            ) {
                 throw new TypeError("No changes made");
             }
             await updateProfile({
                 displayName: firstName + " " + lastName,
+                photoURL: photoUrl,
             });
 
             setMessage("Profile Updated");
@@ -132,6 +139,20 @@ const EditProfile = () => {
                                     setLastName(event.target.value)
                                 }
                                 value={lastName}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
+                                id="photoUrl"
+                                label="Photo URL"
+                                name="photoUrl"
+                                autoComplete="photoUrl"
+                                onChange={(event) =>
+                                    setPhotoUrl(event.target.value)
+                                }
+                                value={photoUrl}
                             />
                         </Grid>
                         {/* <Grid item xs={12}>

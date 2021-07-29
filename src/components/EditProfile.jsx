@@ -52,7 +52,9 @@ const EditProfile = () => {
 
     const [firstName, setFirstName] = useState(fullName[0]);
     const [lastName, setLastName] = useState(fullName[1]);
-    const [phone, setPhone] = useState("");
+    const [photoUrl, setPhotoUrl] = useState(
+        currentUser.photoURL ? currentUser.photoURL : ""
+    );
     const [errorMessage, setErrorMessage] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
@@ -66,11 +68,15 @@ const EditProfile = () => {
 
         try {
             // If first and/or last name has changed, update the display name of profile
-            if (firstName + " " + lastName === currentUser.displayName) {
+            if (
+                firstName + " " + lastName === currentUser.displayName &&
+                photoUrl === currentUser.photoURL
+            ) {
                 throw new TypeError("No changes made");
             }
             await updateProfile({
                 displayName: firstName + " " + lastName,
+                photoURL: photoUrl,
             });
 
             setMessage("Profile Updated");
@@ -98,8 +104,11 @@ const EditProfile = () => {
                         <strong>{errorMessage}</strong>
                     </Alert>
                 )}
-                <Avatar className={classes.avatar}>
-                    <PersonOutlineOutlinedIcon />
+                <Avatar
+                    className={classes.avatar}
+                    src={currentUser.photoURL ? currentUser.photoURL : "none"}
+                >
+                    {/* <PersonOutlineOutlinedIcon /> */}
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Edit Profile
@@ -139,6 +148,20 @@ const EditProfile = () => {
                             <TextField
                                 variant="outlined"
                                 fullWidth
+                                id="photoUrl"
+                                label="Photo URL"
+                                name="photoUrl"
+                                autoComplete="photoUrl"
+                                onChange={(event) =>
+                                    setPhotoUrl(event.target.value)
+                                }
+                                value={photoUrl}
+                            />
+                        </Grid>
+                        {/* <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                fullWidth
                                 id="phone"
                                 label="Phone Number"
                                 name="phone"
@@ -148,7 +171,7 @@ const EditProfile = () => {
                                 }
                                 // value={lastName}
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
 
                     <Link to="/">

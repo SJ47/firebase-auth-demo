@@ -106,8 +106,11 @@ const ChangePassword = () => {
                         <strong>{errorMessage}</strong>
                     </Alert>
                 )}
-                <Avatar className={classes.avatar}>
-                    <PersonOutlineOutlinedIcon />
+                <Avatar
+                    className={classes.avatar}
+                    src={currentUser.photoURL ? currentUser.photoURL : "none"}
+                >
+                    {/* <PersonOutlineOutlinedIcon /> */}
                 </Avatar>
                 <Typography component="h1" variant="h5">
                     Change Password

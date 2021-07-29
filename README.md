@@ -48,7 +48,7 @@ _You will replace the "replace_your_text_XXXXXXXXXXXX" above with your own detai
 
 ## Screenshots of Demo in Action
 
-<img src="https://github.com/SJ47/firebase-auth-demo/src/assets/screenshots/signup.png" width="400">
+<img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/signup.png" width="400">
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/signin.png" width="400">
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/edit-profile.png" width="400">
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/change-email.png" width="400">

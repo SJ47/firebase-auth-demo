@@ -110,7 +110,7 @@ const ChangePassword = () => {
                     <PersonOutlineOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Change Email
+                    Change Password
                 </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>

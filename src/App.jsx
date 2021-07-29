@@ -5,7 +5,7 @@ import LoginContainer from "./containers/LoginContainer";
 function App() {
     return (
         <div className="App">
-            <h1>Welcome to TAFOS</h1>
+            <h1>Firebase Auth Demo</h1>
             <LoginContainer />
         </div>
     );

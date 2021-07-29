@@ -44,18 +44,17 @@ const useStyles = makeStyles((theme) => ({
 const SignUp = () => {
     const classes = useStyles();
 
-    const [firstName, setFirstName] = useState("Fred");
-    const [lastName, setLastName] = useState("Wardo");
-    const [emailValue, setEmailValue] = useState("test1@umachan.co.uk");
-    const [passwordValue, setPasswordValue] = useState("abc123");
-    const [passwordConfirmValue, setPasswordConfirmValue] = useState("abc123");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [emailValue, setEmailValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
+    const [passwordConfirmValue, setPasswordConfirmValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    const { signup, signout, sendVerificationEmail, updateProfile, signin } =
-        useAuth();
+    const { signup, sendVerificationEmail, updateProfile } = useAuth();
 
     const handleSignUpClicked = async (event) => {
         event.preventDefault();

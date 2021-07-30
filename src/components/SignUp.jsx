@@ -188,7 +188,7 @@ const SignUp = () => {
                                 value={passwordConfirmValue}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <FormControlLabel
                                 control={
                                     <Checkbox
@@ -198,7 +198,7 @@ const SignUp = () => {
                                 }
                                 label="I want to receive inspiration, marketing promotions and updates via email."
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
                     <Button
                         disabled={loading}

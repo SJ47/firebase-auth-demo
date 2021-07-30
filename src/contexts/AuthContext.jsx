@@ -55,6 +55,13 @@ export function AuthProvider({ children }) {
         return currentUser.reauthenticateWithCredential(credential);
     }
 
+    function setPersistence(rememberMe) {
+        console.log("Remember me: ", rememberMe);
+        return rememberMe
+            ? auth.setPersistence("local")
+            : auth.setPersistence("session");
+    }
+
     // Only run this when our component mounts and unsubscribe from it where we are done to tidy up the event listener
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -77,6 +84,7 @@ export function AuthProvider({ children }) {
         sendVerificationEmail,
         deleteAccount,
         reauthenticateUser,
+        setPersistence,
     };
 
     return (

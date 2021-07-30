@@ -48,16 +48,18 @@ const SignIn = () => {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
     const [currentCredential, setCurrentCredential] = useState();
+    const [rememberMe, setRememberMe] = useState(false);
 
-    const { signin, signout, sendVerificationEmail } = useAuth();
+    const { signin, signout, sendVerificationEmail, setPersistence } =
+        useAuth();
 
     const handleSignInClicked = async (event) => {
         event.preventDefault();
-        console.log("Sign In Clicked");
 
         try {
             setErrorMessage("");
             setLoading(true);
+            await setPersistence(rememberMe);
             const currentUser = await signin(emailValue, passwordValue);
 
             // If email is not verified, throw an unverified email error
@@ -150,7 +152,12 @@ const SignIn = () => {
                         />
                         <FormControlLabel
                             control={
-                                <Checkbox value="remember" color="primary" />
+                                <Checkbox
+                                    value="remember"
+                                    color="primary"
+                                    checked={rememberMe}
+                                    onChange={() => setRememberMe(!rememberMe)}
+                                />
                             }
                             label="Remember me"
                         />

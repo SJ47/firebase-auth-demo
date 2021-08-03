@@ -5,6 +5,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth } from "../firebase";
 
+import firebase from "firebase/app";
+import "firebase/auth";
+
 const AuthContext = React.createContext();
 
 export function useAuth() {
@@ -62,6 +65,22 @@ export function AuthProvider({ children }) {
             : auth.setPersistence("session");
     }
 
+    // Sign in with Google Functions
+    function signInWithGoogle() {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        return firebase.auth().signInWithPopup(provider);
+        // return firebase.auth().signInWithRedirect(provider);
+
+        // return auth.signInWithPopup(provider);
+    }
+
+    // import firebase from "firebase/app";
+
+    // export const signInWithGoogle = async () => {
+    //     const provider = new firebase.auth.GoogleAuthProvider();
+    //     await firebase.auth().signInWithPopup(provider);
+    // };
+
     // Only run this when our component mounts and unsubscribe from it where we are done to tidy up the event listener
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -85,6 +104,7 @@ export function AuthProvider({ children }) {
         deleteAccount,
         reauthenticateUser,
         setPersistence,
+        signInWithGoogle,
     };
 
     return (

@@ -51,6 +51,19 @@ const ChangeEmail = () => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
+    // If signin method is not email and password then return out without allowing to change auth email
+    // First array item should be current sign provider for current user
+    const signinProvider = currentUser.providerData[0].providerId;
+    if (signinProvider !== "password") {
+        history.push("/");
+    }
+
+    // currentUser.providerData.forEach((prov) => {
+    //     console.log("Provider 1: ", prov.providerId);
+    // });
+    // console.log("Provider 2: ", currentUser.providerData[0].providerId);
+    // throw new TypeError("*** TESTING ***");
+
     const handleUpdateEmailClicked = async (event) => {
         event.preventDefault();
 
@@ -69,8 +82,7 @@ const ChangeEmail = () => {
             if (emailValue === "" || emailConfirmValue === "")
                 throw new TypeError("Email cannot be blank");
 
-            // Emails look good, so proceed with submitting the change
-            // Re-authenticate user
+            // Emails look good, so proceed with submitting the change and reauthenticate the user
             await signin(currentUser.email, passwordValue);
 
             // Update with new email address

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 import {
@@ -39,13 +39,18 @@ const useStyles = makeStyles((theme) => ({
 
 const ForgotPassword = () => {
     const classes = useStyles();
-
+    const history = useHistory();
     const [emailValue, setEmailValue] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { resetPassword } = useAuth();
+    const { resetPassword, currentUser } = useAuth();
+
+    // If already signed in go back to home page
+    useEffect(() => {
+        if (currentUser) history.push("/");
+    }, []);
 
     const handleSignInClicked = async (event) => {
         event.preventDefault();

@@ -7,7 +7,6 @@ import {
     Avatar,
     CssBaseline,
     Card,
-    CardActions,
     CardContent,
     Typography,
 } from "@material-ui/core";
@@ -54,6 +53,9 @@ const Home = () => {
     if (!currentUser) {
         return <Redirect to="/signin" />;
     }
+
+    // First array item should be current sign provider for current user
+    const signinProvider = currentUser.providerData[0].providerId;
 
     function handleSignOut() {
         setErrorMessage("");
@@ -175,27 +177,31 @@ const Home = () => {
                         Edit Profile
                     </Button>
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                        onClick={() => history.push("/change-email")}
-                    >
-                        Change Email
-                    </Button>
+                    {signinProvider === "password" ? (
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={() => history.push("/change-email")}
+                        >
+                            Change Email
+                        </Button>
+                    ) : null}
 
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        className={classes.submit}
-                        onClick={() => history.push("/change-password")}
-                    >
-                        Change Password
-                    </Button>
+                    {signinProvider === "password" ? (
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="primary"
+                            className={classes.submit}
+                            onClick={() => history.push("/change-password")}
+                        >
+                            Change Password
+                        </Button>
+                    ) : null}
 
                     <Button
                         type="submit"

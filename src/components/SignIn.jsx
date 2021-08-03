@@ -60,9 +60,9 @@ const SignIn = () => {
     } = useAuth();
 
     // If already signed in go back to home page
-    useEffect(() => {
-        if (currentUser) history.push("/");
-    }, []);
+    // useEffect(() => {
+    //     if (currentUser) history.push("/");
+    // }, []);
 
     const handleSignInWithGoogleClicked = async (event) => {
         event.preventDefault();

@@ -58,9 +58,9 @@ const SignUp = () => {
         useAuth();
 
     // If already signed in go back to home page
-    useEffect(() => {
-        if (currentUser) history.push("/");
-    }, []);
+    // useEffect(() => {
+    //     if (currentUser) history.push("/");
+    // }, []);
 
     const handleSignUpClicked = async (event) => {
         event.preventDefault();

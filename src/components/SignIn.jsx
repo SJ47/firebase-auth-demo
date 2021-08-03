@@ -65,7 +65,6 @@ const SignIn = () => {
     }, []);
 
     const handleSignInWithGoogleClicked = async (event) => {
-        // Firebase code goes here - note error handling for failed attempts is missed out here but should go here if production mode
         event.preventDefault();
 
         try {

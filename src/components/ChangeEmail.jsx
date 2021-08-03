@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-// import { getCurrentUser } from "./getCurrentUser";
 import {
     Button,
     Avatar,
@@ -17,7 +16,6 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 
 import Alert from "@material-ui/lab/Alert";
 import Copyright from "./Copyright";
-import { auth } from "../firebase";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -43,13 +41,8 @@ const ChangeEmail = () => {
     const classes = useStyles();
     const history = useHistory();
 
-    const {
-        currentUser,
-        updateEmail,
-        signin,
-        sendVerificationEmail,
-        signInWithGoogle,
-    } = useAuth();
+    const { currentUser, updateEmail, signin, sendVerificationEmail } =
+        useAuth();
 
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");

@@ -46,7 +46,10 @@ const DeleteAccount = () => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const { currentUser, signin, deleteAccount } = useAuth();
+    const { currentUser, signin, deleteAccount, signInWithGoogle } = useAuth();
+
+    // First array item should be current sign provider for current user
+    const signinProvider = currentUser.providerData[0].providerId;
 
     const handleDeleteAccountClicked = async (event) => {
         event.preventDefault();
@@ -58,7 +61,9 @@ const DeleteAccount = () => {
         try {
             // await user.reauthenticateWithCredential(credentials);
             // Re-authenticate user
-            await signin(currentUser.email, passwordValue);
+            if (signinProvider === "google.com") await signInWithGoogle();
+            if (signinProvider === "password")
+                await signin(currentUser.email, passwordValue);
             await deleteAccount();
         } catch (error) {
             setErrorMessage("Failed to delete account: " + error.message);
@@ -92,21 +97,24 @@ const DeleteAccount = () => {
                     <Typography component="h1" variant="h5">
                         Delete account{" "}
                     </Typography>
+
                     <form className={classes.form} noValidate>
-                        <TextField
-                            variant="outlined"
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            onChange={(event) =>
-                                setPasswordValue(event.target.value)
-                            }
-                        />
+                        {signinProvider === "password" ? (
+                            <TextField
+                                variant="outlined"
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type="password"
+                                id="password"
+                                autoComplete="current-password"
+                                onChange={(event) =>
+                                    setPasswordValue(event.target.value)
+                                }
+                            />
+                        ) : null}
                         <Button
                             disabled={loading}
                             type="submit"

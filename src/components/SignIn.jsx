@@ -50,8 +50,29 @@ const SignIn = () => {
     const [currentCredential, setCurrentCredential] = useState();
     const [rememberMe, setRememberMe] = useState(false);
 
-    const { signin, signout, sendVerificationEmail, setPersistence } =
-        useAuth();
+    const {
+        signin,
+        signout,
+        sendVerificationEmail,
+        setPersistence,
+        signInWithGoogle,
+    } = useAuth();
+
+    const handleSignInWithGoogleClicked = async (event) => {
+        // Firebase code goes here - note error handling for failed attempts is missed out here but should go here if production mode
+        event.preventDefault();
+
+        try {
+            setErrorMessage("");
+            setLoading(true);
+            const currentUser = await signInWithGoogle();
+            setCurrentCredential(currentUser);
+            history.push("/");
+        } catch (error) {
+            setErrorMessage("Failed to sign in: " + error.message);
+        }
+        setLoading(false);
+    };
 
     const handleSignInClicked = async (event) => {
         event.preventDefault();
@@ -170,6 +191,16 @@ const SignIn = () => {
                             onClick={handleSignInClicked}
                         >
                             Sign In
+                        </Button>
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            color="secondary"
+                            className={classes.submit}
+                            onClick={handleSignInWithGoogleClicked}
+                        >
+                            Sign In With Google
                         </Button>
                         <Grid container>
                             <Grid item xs>

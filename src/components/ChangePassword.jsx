@@ -50,6 +50,13 @@ const ChangePassword = () => {
     const [message, setMessage] = useState("");
     const [loading, setLoading] = useState(false);
 
+    // If signin method is not email and password then return out without allowing to change auth email
+    // First array item should be current sign provider for current user
+    const signinProvider = currentUser.providerData[0].providerId;
+    if (signinProvider !== "password") {
+        history.push("/");
+    }
+
     const handleChangePasswordClicked = async (event) => {
         event.preventDefault();
 

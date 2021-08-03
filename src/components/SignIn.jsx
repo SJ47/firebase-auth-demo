@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -56,7 +56,13 @@ const SignIn = () => {
         sendVerificationEmail,
         setPersistence,
         signInWithGoogle,
+        currentUser,
     } = useAuth();
+
+    // If already signed in go back to home page
+    useEffect(() => {
+        if (currentUser) history.push("/");
+    }, []);
 
     const handleSignInWithGoogleClicked = async (event) => {
         // Firebase code goes here - note error handling for failed attempts is missed out here but should go here if production mode

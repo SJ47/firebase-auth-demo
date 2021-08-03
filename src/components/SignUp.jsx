@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -54,7 +54,13 @@ const SignUp = () => {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    const { signup, sendVerificationEmail, updateProfile } = useAuth();
+    const { signup, sendVerificationEmail, updateProfile, currentUser } =
+        useAuth();
+
+    // If already signed in go back to home page
+    useEffect(() => {
+        if (currentUser) history.push("/");
+    }, []);
 
     const handleSignUpClicked = async (event) => {
         event.preventDefault();

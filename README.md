@@ -2,9 +2,11 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/06f3c606-c25a-4b5c-b8e8-3df71ab21526/deploy-status)](https://app.netlify.com/sites/peaceful-banach-7e9e03/deploys)
 
-This demo uses the firebase username and password authentication method.
+This demo uses the firebase email and password authentication method as well as Google Sign In.
 
-Authentication methods used include: Sign up, sign in, update profile, change email, change password, delete account, reset password and verification emails.
+Authentication (email and password) methods used include: Sign up, sign in, update profile, change email, change password, delete account, reset password and verification emails.
+
+Authentication (Google Sign In) methods used include: Sign in, update profile and delete account.
 
 The UI uses Material UI so I could get some practice with it as well as to easily setup the UI interfaces and concentrate more on the Firebase auth code.
 
@@ -45,7 +47,7 @@ _You will replace the "replace_your_text_XXXXXXXXXXXX" above with your own detai
 14. Open a terminal window and go to your app root folder
 15. npm run dev
 16. Go to your browser http://localhost:3000 and you should see your application running
-17. As you have not set any accounts yet, start by clicking on the Sign up and create your first test account. \_Please use a valid email address you have access to as a verification email will be sent to that address so you can validate the email before signing in.
+17. As you have not set any accounts yet, start by clicking on the Sign up and create your first test account. Please use a valid email address you have access to as a verification email will be sent to that address so you can validate the email before signing in.
 18. After you create an account, you can go back to your Firebase console, click on the Authentication link (left hand side) and you should see your new user record listed.
 
 ## Screenshots of Demo in Action

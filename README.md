@@ -60,3 +60,4 @@ _You will replace the "replace_your_text_XXXXXXXXXXXX" above with your own detai
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/password-reset.png" width="400">
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/delete-account.png" width="400">
 <img src="https://github.com/SJ47/firebase-auth-demo/blob/main/src/assets/screenshots/homepage.png" width="400">
+
